@@ -181,7 +181,7 @@ export default class ReservasiScreen extends Component {
                                         </Body>
                                         <Right />
                                     </ListItem>
-                                    <ListItem>
+                                    {/* <ListItem>
                                         <Body>
                                             <CountDown
                                                 until={item.duration}
@@ -195,7 +195,7 @@ export default class ReservasiScreen extends Component {
                                                 size={20}
                                             />
                                         </Body>
-                                    </ListItem>
+                                    </ListItem> */}
                                     <Button
                                     style={styles.btnBatal}
                                     onPress={this.batalReservasi}
@@ -208,11 +208,11 @@ export default class ReservasiScreen extends Component {
                         />
                     </View>
                     {/* </ScrollView> */}
-                    <Button full
+                    {/* <Button full
                         style={styles.btnSign}
                         onPress={this.btnReservasi}>
                         <Text style={styles.txtSign}>RESERVASI</Text>
-                    </Button>
+                    </Button> */}
                 </View>
             </View>
         )

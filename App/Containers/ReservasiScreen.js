@@ -37,6 +37,8 @@ export default class ReservasiScreen extends Component {
 
             jmlpelanggan: 0,
 
+            keterangan: "",
+
             selectedStartDate: null,
         };
         this.onDateChange = this.onDateChange.bind(this);
@@ -123,7 +125,9 @@ export default class ReservasiScreen extends Component {
             waktu_pesan: date_now,
             waktu_bayar: date_exp,
             duration: d,
+            email: user.email,
             userid: user.uid,
+            keterangan: this.state.keterangan,
             status: "Belum Bayar"
         })
         this.props.navigation.navigate('CountDownScreen')
@@ -258,7 +262,10 @@ export default class ReservasiScreen extends Component {
                                             <Text style={styles.txtCard}>Keterangan </Text>
                                         </Left>
                                         <Body>
-                                            <Text style={styles.txtCard2}>: </Text>
+                                            <View style={{ flexDirection: 'row', justifyContent: 'flex-start' }}>
+                                                <Text style={styles.txtCard2}>: </Text>
+                                                <Input style={{ borderColor: 'grey', fontSize: 12 }} onChangeText={keterangan => this.setState({ keterangan })} placeholder='Keterangan' />
+                                            </View>
                                         </Body>
                                         <Right />
                                         {/* </CardItem> */}
