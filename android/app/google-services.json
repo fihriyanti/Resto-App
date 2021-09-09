@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "888195449280",
+    "firebase_url": "https://d-fasto-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "d-fasto",
+    "storage_bucket": "d-fasto.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:888195449280:android:49929aa83c7c262dc8c825",
+        "android_client_info": {
+          "package_name": "com.restoap"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "888195449280-ap3bujtupt328tq60avusjv64eqvdepe.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.restoap",
+            "certificate_hash": "76ce8284ed1f59040b9302b89012f12ab2f8f0fb"
+          }
+        },
+        {
+          "client_id": "888195449280-07m8p51ucptpc652aqt65pt67qpmvpbv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD8dCbPpHtjT6icUq0vgJiPbXTD8nJ__FU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "888195449280-07m8p51ucptpc652aqt65pt67qpmvpbv.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
