@@ -154,7 +154,9 @@ export default class KeranjangScreen extends Component {
               <Text style={styles.txtTotal}>Total : </Text>
               <Text style={styles.txtTotal}>Rp. {this.state.total}</Text>
             </View>
-            <Button full style={styles.btnPesan}> 
+            <Button full style={styles.btnPesan}
+              onPress={() => this.props.navigation.navigate('PesananScreen')}
+            > 
               <Text style={styles.txtBtnPesan}>PESAN</Text>
             </Button>
           </View>

@@ -6,15 +6,10 @@ import { Calendar } from 'react-native-calendars'
 import TimePicker from "react-native-24h-timepicker"
 import moment from "moment"
 import firebase from 'firebase'
-// import CountDown from "react-native-countdown-component"
-// import SelectDropdown from 'react-native-select-dropdown'
-import { Dropdown } from 'react-native-material-dropdown';
 
 // Styles
 import styles from './Styles/ReservasiScreenStyles'
 import { ScrollView } from 'react-native'
-
-const reservasi = ['Makan Siang', 'Ulang Tahun', 'Pertemuan', 'Acara Keluarga', 'Rapat']
 
 export default class ReservasiScreen extends Component {
 
@@ -104,9 +99,6 @@ export default class ReservasiScreen extends Component {
         // Converting in seconds
         var d = hours * 60 * 60 + minutes * 60 + seconds;
 
-        // var hari_ini = new Date().getDate() + "-" + new Date().getMonth() + "-" + new Date().getFullYear();
-        // var jam_ini = new Date().getHours() + ":" + new Date().getMinutes() + ":" + new Date().getSeconds();
-
         console.log(nama + ", " + jumlah + ", " + tanggal + ", " + waktu)
         console.log(date_now)
         console.log(date_exp)
@@ -153,7 +145,6 @@ export default class ReservasiScreen extends Component {
                             <Card style={styles.card}>
                                 <List>
                                     <ListItem>
-                                        {/* <CardItem> */}
                                         <Left>
                                             <Text style={styles.txtCard}>Nama</Text>
                                         </Left>
@@ -164,10 +155,8 @@ export default class ReservasiScreen extends Component {
                                             </View>
                                         </Body>
                                         <Right />
-                                        {/* </CardItem> */}
                                     </ListItem>
                                     <ListItem>
-                                        {/* <CardItem> */}
                                         <Left>
                                             <Text style={styles.txtCard}>Tanggal</Text>
                                         </Left>
@@ -179,10 +168,8 @@ export default class ReservasiScreen extends Component {
                                                 onPress={() => this.setState({ show: true })}
                                                 style={styles.icon} type='Feather' name='calendar' />
                                         </Right>
-                                        {/* </CardItem> */}
                                     </ListItem>
                                     <ListItem>
-                                        {/* <CardItem> */}
                                         <Left>
                                             <Text style={styles.txtCard}>Waktu</Text>
                                         </Left>
@@ -203,29 +190,8 @@ export default class ReservasiScreen extends Component {
                                                 onConfirm={(hour, minute) => this.onConfirm(hour, minute)}
                                             />
                                         </Right>
-                                        {/* </CardItem> */}
                                     </ListItem>
-                                    {/* <ListItem>
-                                        <SelectDropdown
-                                            style={{backgroundColor: 'white'}}
-                                            data={reservasi}
-                                            onSelect={(selectedItem, index) => {
-                                                console.log(selectedItem, index)
-                                            }}
-                                            buttonTextAfterSelection={(selectedItem, index) => {
-                                                // text represented after item is selected
-                                                // if data array is an array of objects then return selectedItem.property to render after item is selected
-                                                return selectedItem
-                                            }}
-                                            rowTextForSelection={(item, index) => {
-                                                // text represented for each item in dropdown
-                                                // if data array is an array of objects then return item.property to represent item in dropdown
-                                                return item
-                                            }}
-                                        />
-                                    </ListItem> */}
                                     <ListItem>
-                                        {/* <CardItem> */}
                                         <Left>
                                             <Text style={styles.txtCard}>Pelanggan</Text>
                                         </Left>
@@ -236,28 +202,8 @@ export default class ReservasiScreen extends Component {
                                             </View>
                                         </Body>
                                         <Right />
-                                        {/* </CardItem> */}
                                     </ListItem>
-                                    {/* <ListItem>
-                                        <CardItem>
-                                            <Left>
-                                                <Text style={styles.txtCard}>No Meja</Text>
-                                            </Left>
-                                            <Body>
-                                                <Text style={styles.txtCard1}>: 2</Text>
-                                            </Body>
-                                            <Right>
-                                                <Text
-                                                    onPress={() => this.setState({ show3: true })}
-                                                    style={styles.txtBtnPilih}
-                                                >
-                                                    Lihat Meja
-                                                </Text>
-                                            </Right>
-                                        </CardItem>
-                                    </ListItem> */}
                                     <ListItem>
-                                        {/* <CardItem> */}
                                         <Left>
                                             <Text style={styles.txtCard}>Keterangan </Text>
                                         </Left>
@@ -268,7 +214,6 @@ export default class ReservasiScreen extends Component {
                                             </View>
                                         </Body>
                                         <Right />
-                                        {/* </CardItem> */}
                                     </ListItem>
                                 </List>
                             </Card>
@@ -302,18 +247,6 @@ export default class ReservasiScreen extends Component {
                                     }
                                 }
                             />
-                        </View>
-                    </View>
-                </Modal>
-                <Modal transparent={true} visible={this.state.show3}>
-                    <View style={styles.bgModal}>
-                        <View style={styles.modal}>
-                            <Text>Pilih Meja</Text>
-                            <Button
-                                onPress={() => this.setState({ show3: false })}
-                            >
-                                <Text>OK</Text>
-                            </Button>
                         </View>
                     </View>
                 </Modal>
