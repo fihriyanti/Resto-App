@@ -116,4 +116,13 @@ export default StyleSheet.create({
       fontWeight: 'bold',
       fontSize: 20
     },
+    btnBatal2: {
+      backgroundColor: '#c92014',
+      marginTop: 10
+    },
+    txtBtnBatal2: {
+      color: 'white',
+      fontWeight: 'bold',
+      fontSize: 20
+    },
 })

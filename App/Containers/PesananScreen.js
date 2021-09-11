@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { View, Text, FlatList, Modal } from 'react-native'
+import { View, Text, FlatList, Modal, ScrollView } from 'react-native'
 import { Button, Icon, Input, List, ListItem, Item } from 'native-base'
 import firebase from 'firebase'
 
@@ -56,12 +56,12 @@ export default class PesananScreen extends Component {
   bayar = () => {
     const user = firebase.auth().currentUser
     const Reservasi = firebase.database().ref("Transaksi/" + user.uid);
-        Reservasi.set({
-          status: "Belum dikonfirmasi",
-          noMeja: this.state.noMeja,
-          statusPesan: "Diproses"
-        })
-        this.props.navigation.navigate('CountDownScreen')
+    Reservasi.set({
+      status: "Belum dikonfirmasi",
+      noMeja: this.state.noMeja,
+      statusPesan: "Diproses"
+    })
+    this.props.navigation.navigate('CountDownScreen')
   }
 
   render() {
@@ -76,45 +76,49 @@ export default class PesananScreen extends Component {
               <Text style={styles.txtHeader}>Pesanan</Text>
             </View>
           </View>
-          <View style={styles.body}>
-            <View style={styles.lineCard}>
-              <Text style={styles.judul}>Jumlah Pesanan</Text>
-              <FlatList
-                data={this.state.cart}
-                keyExtractor={(item) => item.key}
-                renderItem={({ item }) => (
-                  <List style={styles.card}>
-                    <ListItem>
-                      <View style={{ flexDirection: 'column' }}>
-                        <View style={{ flexDirection: 'row' }}>
-                          <Text style={styles.namaMenu}>{item.nama}</Text>
-                          <Text style={styles.jumlah}>x {item.banyak}</Text>
+          {/* <ScrollView> */}
+            <View style={styles.body}>
+              <View style={styles.lineCard}>
+                <Text style={styles.judul}>Jumlah Pesanan</Text>
+                <FlatList
+                  data={this.state.cart}
+                  keyExtractor={(item) => item.key}
+                  renderItem={({ item }) => (
+                    <List style={styles.card}>
+                      <ListItem>
+                        <View style={{ flexDirection: 'column' }}>
+                          <View style={{ flexDirection: 'row' }}>
+                            <Text style={styles.namaMenu}>{item.nama}</Text>
+                            <Text style={styles.jumlah}>x {item.banyak}</Text>
+                          </View>
+                          <Text style={styles.hargaMenu}>Rp. {item.harga}</Text>
                         </View>
-                        <Text style={styles.hargaMenu}>Rp. {item.harga}</Text>
-                      </View>
-                    </ListItem>
-                  </List>
-                )}
-              />
+                      </ListItem>
+                    </List>
+                  )}
+                />
+              </View>
+              <View style={{ flexDirection: 'row' }}>
+                <Text style={styles.judul3}>No. Meja</Text>
+                {/* <Item> */}
+                <Input onChangeText={noMeja => this.setState({ noMeja })} placeholder="Input No Meja" />
+                {/* </Item> */}
+              </View>
+              <Text style={styles.judul}>Metode Pembayaran</Text>
+              <View style={{ flexDirection: 'row', justifyContent: 'space-around' }}>
+                <Button rounded style={styles.btnPesan}
+                  onPress={() => this.setState({ show: true })}
+                >
+                  <Text style={styles.txtBtnPesan1}>TRANSFER BANK</Text>
+                </Button>
+                <Button rounded style={styles.btnPesan}
+                  onPress={() => this.setState({ show2: true })}
+                >
+                  <Text style={styles.txtBtnPesan1}>CASH</Text>
+                </Button>
+              </View>
             </View>
-            <Text style={styles.judul}>No. Meja</Text>
-            <Item>
-              <Input onChangeText={noMeja => this.setState({ noMeja })} placeholder="Input No Meja" />
-            </Item>
-            <Text style={styles.judul}>Metode Pembayaran</Text>
-            <View style={{ flexDirection: 'column' }}>
-              <Button full style={styles.btnPesan}
-                onPress={() => this.setState({ show: true })}
-              >
-                <Text style={styles.txtBtnPesan}>TRANSFER BANK</Text>
-              </Button>
-              <Button full style={styles.btnPesan}
-                onPress={() => this.setState({ show: true })}
-              >
-                <Text style={styles.txtBtnPesan}>CASH</Text>
-              </Button>
-            </View>
-          </View>
+          {/* </ScrollView> */}
           <View style={styles.total}>
             <View style={{ flexDirection: 'row' }}>
               <Text style={styles.txtTotal}>Total Pembayaran : </Text>
@@ -140,14 +144,21 @@ export default class PesananScreen extends Component {
               <Button full
                 style={styles.btnPesan}
                 onPress={() => {
-                  this.setState({ show: false });
                   this.bayar();
                   this.props.navigation.navigate('PembayaranScreen');
                 }}
               >
                 <Text style={styles.txtBtnPesan}>BAYAR</Text>
               </Button>
-              <Text style={{color: 'red'}}>Silahkan mengklik tombol bayar setelah melakukan pembayaran</Text>
+              <Text style={{ color: 'red' }}>Silahkan mengklik tombol bayar setelah melakukan pembayaran</Text>
+              <Button full
+                style={styles.btnBatal}
+                onPress={() => {
+                  this.setState({ show: false });
+                }}
+              >
+                <Text style={styles.txtBtnBatal}>BATAL</Text>
+              </Button>
             </View>
           </View>
         </Modal>
@@ -155,28 +166,26 @@ export default class PesananScreen extends Component {
           <View style={styles.bgModal}>
             <View style={styles.modal}>
               <Text style={styles.judul}>Cash</Text>
-              <Text>Silahkan lakukan pembayaran di kasir</Text>
-              <List>
-                <ListItem>
-                  <View style={{ flexDirection: 'column' }}>
-                    {/* <Text style={styles.noRek}>7134256596</Text> */}
-                    {/* <Text style={styles.hargaMenu}>a/n FIHRIYANTI</Text> */}
-                    <Text style={styles.hargaMenu}>total pembayaran sebesar :</Text>
-                    <Text style={styles.noRek1}>Rp. {this.state.total}</Text>
-                  </View>
-                </ListItem>
-              </List>
+              <Text>Silahkan lakukan pembayaran di kasir sebesar :</Text>
+              <Text style={styles.noRek1}>Rp. {this.state.total}</Text>
               <Button full
                 style={styles.btnPesan}
                 onPress={() => {
-                  this.setState({ show: false });
                   this.bayar;
                   this.props.navigation.navigate('PembayaranScreen');
                 }}
               >
                 <Text style={styles.txtBtnPesan}>BAYAR</Text>
               </Button>
-              <Text style={{color: 'red'}}>Silahkan mengklik tombol bayar setelah melakukan pembayaran</Text>
+              <Text style={{ color: 'red' }}>Silahkan mengklik tombol bayar setelah melakukan pembayaran</Text>
+              <Button full
+                style={styles.btnBatal}
+                onPress={() => {
+                  this.setState({ show2: false });
+                }}
+              >
+                <Text style={styles.txtBtnBatal}>BATAL</Text>
+              </Button>
             </View>
           </View>
         </Modal>

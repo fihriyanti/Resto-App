@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Image, View, Text, ScrollView } from 'react-native'
 import { Item, Input, Icon, Button, Label } from 'native-base'
 import firebase from 'firebase'
-import auth from '@react-native-firebase/auth'
+// import auth from '@react-native-firebase/auth'
 import { Images } from '../Themes'
 
 import * as Animatable from 'react-native-animatable';

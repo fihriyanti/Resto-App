@@ -1,8 +1,8 @@
 package com.restoap;
 
 import com.facebook.react.ReactActivity;
-import io.invertase.firebase.RNFirebasePackage;
-import io.invertase.firebase.auth.RNFirebaseAuthPackage;
+// import io.invertase.firebase.RNFirebasePackage;
+// import io.invertase.firebase.auth.RNFirebaseAuthPackage;
 
 public class MainActivity extends ReactActivity {
 

@@ -77,6 +77,12 @@ export default StyleSheet.create({
     fontWeight: 'bold',
     fontSize: 20
   },
+  txtBtnPesan1: {
+    color: 'white',
+    fontWeight: 'bold',
+    fontSize: 20,
+    paddingHorizontal: 20
+  },
   modal: {
       // justifyContent: 'center',
       backgroundColor: '#fff',
@@ -96,9 +102,23 @@ export default StyleSheet.create({
     textAlign: 'center'
   },
   noRek1: {
-    // padding: 8,
+    padding: 8,
     fontWeight: 'bold',
     fontSize: 18,
     textAlign: 'center'
+  },
+  btnBatal: {
+    backgroundColor: '#c92014',
+    marginTop: 10
+  },
+  txtBtnBatal: {
+    color: 'white',
+    fontWeight: 'bold',
+    fontSize: 20
+  },
+  judul3:{
+    fontWeight: 'bold',
+    fontSize: 18,
+    // marginBottom: 10
   },
 })

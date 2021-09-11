@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { View, Text, FlatList, Modal } from 'react-native'
-import { Body, Button, Icon, Left, List, ListItem, Right, CardItem } from 'native-base'
+import { Body, Button, Icon, Left, List, ListItem, Right, CardItem, Card } from 'native-base'
 import firebase from 'firebase'
 
 // Styles
@@ -34,16 +34,6 @@ export default class PembayaranScreen extends Component {
         status: snapshot.val().status
       })
       this.setState({ list: li })
-
-      // snapshot.forEach((child) => {
-      //   li.push({
-      //     key: child.key,
-      //     noMeja: child.val().noMeja,
-      //     statusPesan: child.val().statusPesan,
-      //     status: child.val().status
-      //   })
-      //   totalsemua += child.val().perjumlah
-      // })
       console.log(li)
     })
     // this.intervalID = setInterval(this.total.bind(this), 5000);
@@ -68,21 +58,27 @@ export default class PembayaranScreen extends Component {
               data={this.state.list}
               keyExtractor={(item) => item.key}
               renderItem={({ item }) => (
-                <CardItem cardBody>
-                  {/* <Image source={{ uri: item.img }} style={styles.logo} /> */}
-                  <View style={{ flexDirection: 'column', marginLeft: 15 }}>
-                    <View style={{flexDirection: 'row'}}>
-                      <Text style={styles.judul}>Status Pembayaran</Text>
-                      <Text style={styles.namaMenu}> : {item.status}</Text>
+                <Card style={styles.card}>
+                  <CardItem>
+                    <View style={{ flexDirection: 'column', marginLeft: 15 }}>
+                      <View style={{ flexDirection: 'row', marginVertical: 10 }}>
+                        <Text style={styles.judul}>Status Pembayaran</Text>
+                        <Text style={styles.namaMenu}> : {item.status}</Text>
+                      </View>
+                      <View style={{ flexDirection: 'row', marginVertical: 10 }}>
+                        <Text style={styles.judul}>Status Pesanan</Text>
+                        <Text style={styles.namaMenu}> : {item.statusPesan}</Text>
+                      </View>
                     </View>
-                    <View style={{flexDirection: 'row'}}>
-                      <Text style={styles.judul}>Status Pesanan</Text>
-                      <Text style={styles.hargaMenu}> : {item.statusPesan}</Text>
-                    </View>
-                  </View>
-                </CardItem>
+                  </CardItem>
+                </Card>
               )}
             />
+            <Button full style={styles.btn}
+              onPress={() => this.props.navigation.navigate('MenuTabNav')}
+            >
+              <Text style={styles.txtBtn}>MENU</Text>
+            </Button>
           </View>
         </View>
       </View >

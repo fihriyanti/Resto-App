@@ -49,7 +49,7 @@ export default class AkunScreen extends Component {
             />
           </View>
           <View style={styles.centered}>
-            <Thumbnail source={Images.profile} style={styles.logo} />
+            {/* <Thumbnail source={Images.profile} style={styles.logo} /> */}
             <Text style={styles.nama}>Akun Saya</Text>
             <Text style={styles.username}>@username</Text>
           </View>

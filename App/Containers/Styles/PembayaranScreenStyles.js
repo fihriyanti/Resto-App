@@ -33,6 +33,18 @@ export default StyleSheet.create({
   },
   judul:{
     fontWeight: 'bold',
-    fontSize: 15,
+    fontSize: 18,
   },
+  namaMenu: {
+    fontSize: 18,
+  },
+  btn: {
+    backgroundColor: '#1565c0',
+    marginVertical: 20
+  },
+  txtBtn: {
+    color: 'white',
+    fontWeight: 'bold',
+    fontSize: 20
+  }
 })

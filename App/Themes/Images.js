@@ -2,7 +2,7 @@ import { Images } from '.'
 
 // leave off @2x/@3x
 const images = {
-  profile: require('../Images/profile.png'),
+  // profile: require('../Images/profile.png'),
   ayamrica: require('../Images/ayamrica.jpg'),
   capcay: require('../Images/capcay.jpg'),
   nasikambing: require('../Images/nasigorengkambing.jpg'),

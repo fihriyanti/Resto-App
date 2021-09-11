@@ -258,6 +258,14 @@ export default class ReservasiScreen extends Component {
                                                     <Text style={styles.txtBtnPesan}>BAYAR</Text>
                                                 </Button>
                                                 <Text style={{ color: 'red' }}>Silahkan mengklik tombol bayar setelah melakukan pembayaran</Text>
+                                                <Button full
+                                                    style={styles.btnBatal2}
+                                                    onPress={() => {
+                                                        this.setState({ show: false });
+                                                    }}
+                                                >
+                                                    <Text style={styles.txtBtnBatal2}>BATAL</Text>
+                                                </Button>
                                             </View>
                                         </View>
                                     </Modal>
