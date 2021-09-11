@@ -22,11 +22,11 @@ export default StyleSheet.create({
         borderBottomLeftRadius: 30
     },
     set: {
-      color: 'white',
-      fontSize: 32,
-      marginTop: 10,
-      marginRight: 10,
-      marginLeft: 10
+        color: 'white',
+        fontSize: 32,
+        marginTop: 10,
+        marginRight: 10,
+        marginLeft: 10
     },
     txtTitle: {
         marginTop: 10,
@@ -82,5 +82,38 @@ export default StyleSheet.create({
         color: 'white',
         fontSize: 18,
         fontWeight: 'bold'
+    },
+    modal: {
+        // justifyContent: 'center',
+        backgroundColor: '#fff',
+        borderTopLeftRadius: 20,
+        borderTopRightRadius: 20,
+        paddingVertical: 50,
+        paddingHorizontal: 20,
+    },
+    bgModal: {
+        backgroundColor: '#9e9e9eaa',
+        flex: 1,
+        justifyContent: 'flex-end'
+    },
+    noRek: {
+        fontWeight: 'bold',
+        fontSize: 18,
+        textAlign: 'center'
+    },
+    noRek1: {
+        // padding: 8,
+        fontWeight: 'bold',
+        fontSize: 18,
+        textAlign: 'center'
+    },
+    btnPesan: {
+      backgroundColor: '#1565c0',
+      marginTop: 10
+    },
+    txtBtnPesan: {
+      color: 'white',
+      fontWeight: 'bold',
+      fontSize: 20
     },
 })

@@ -13,6 +13,7 @@ import CountDown from './App/Containers/CountDownScreen'
 import SignUpEmailScreen from './App/Containers/SignUpEmailScreen'
 import PesananScreen from './App/Containers/PesananScreen'
 import PembayaranScreen from './App/Containers/PembayaranScreen'
+import ReservasiPayScreen from './App/Containers/ReservasiPayScreen'
 
 import styles from './App/NavigationStyles'
 
@@ -31,6 +32,7 @@ const PrimaryNav = createStackNavigator({
   KeranjangScreen: { screen : KeranjangScreen },
   PesananScreen: { screen : PesananScreen },
   PembayaranScreen: { screen : PembayaranScreen },
+  ReservasiPayScreen: { screen : ReservasiPayScreen },
 }, {
     headerMode: 'none',
     initialRouteName: 'LaunchScreen',

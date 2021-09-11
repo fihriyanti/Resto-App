@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { View, Text, FlatList, Modal } from 'react-native'
-import { Body, Button, Icon, Left, List, ListItem, Right } from 'native-base'
+import { Body, Button, Icon, Left, List, ListItem, Right, CardItem } from 'native-base'
 import firebase from 'firebase'
 
 // Styles
@@ -12,7 +12,7 @@ export default class PembayaranScreen extends Component {
     this.state = {
       count: 0,
       jumlah: 0,
-      cart: [],
+      list: [],
       total: 0,
       show: false,
       show2: false,
@@ -24,25 +24,27 @@ export default class PembayaranScreen extends Component {
 
     const user = firebase.auth().currentUser
 
-    firebase.database().ref('Keranjang/' + user.uid).on('value', (snapshot) => {
+    firebase.database().ref('Transaksi/' + user.uid).on('value', (snapshot) => {
       var li = []
-      var totalsemua = 0
-      snapshot.forEach((child) => {
-        li.push({
-          key: child.key,
-          nama: child.val().nama,
-          harga: child.val().harga,
-          img: child.val().img,
-          banyak: child.val().banyak,
-          perjumlah: child.val().perjumlah
-        })
-        totalsemua += child.val().perjumlah
+      // var totalsemua = 0
+      li.push({
+        key: snapshot.key,
+        noMeja: snapshot.val().noMeja,
+        statusPesan: snapshot.val().statusPesan,
+        status: snapshot.val().status
       })
+      this.setState({ list: li })
+
+      // snapshot.forEach((child) => {
+      //   li.push({
+      //     key: child.key,
+      //     noMeja: child.val().noMeja,
+      //     statusPesan: child.val().statusPesan,
+      //     status: child.val().status
+      //   })
+      //   totalsemua += child.val().perjumlah
+      // })
       console.log(li)
-      console.log(totalsemua)
-      console.log(user.uid)
-      this.setState({ total: totalsemua })
-      this.setState({ cart: li })
     })
     // this.intervalID = setInterval(this.total.bind(this), 5000);
   }
@@ -62,26 +64,25 @@ export default class PembayaranScreen extends Component {
             </View>
           </View>
           <View style={styles.body}>
-            <List>
-              <ListItem>
-                <Left>
-                  <Text style={styles.judul}>Status Pembayaran</Text>
-                </Left>
-                <Body>
-                  <Text>: Dikonfirmasi</Text>
-                </Body>
-              </ListItem>
-            </List>
-            <List>
-              <ListItem>
-                <Left>
-                  <Text style={styles.judul}>Status Pesanan</Text>
-                </Left>
-                <Body>
-                  <Text>: Sedang diproses</Text>
-                </Body>
-              </ListItem>
-            </List>
+            <FlatList
+              data={this.state.list}
+              keyExtractor={(item) => item.key}
+              renderItem={({ item }) => (
+                <CardItem cardBody>
+                  {/* <Image source={{ uri: item.img }} style={styles.logo} /> */}
+                  <View style={{ flexDirection: 'column', marginLeft: 15 }}>
+                    <View style={{flexDirection: 'row'}}>
+                      <Text style={styles.judul}>Status Pembayaran</Text>
+                      <Text style={styles.namaMenu}> : {item.status}</Text>
+                    </View>
+                    <View style={{flexDirection: 'row'}}>
+                      <Text style={styles.judul}>Status Pesanan</Text>
+                      <Text style={styles.hargaMenu}> : {item.statusPesan}</Text>
+                    </View>
+                  </View>
+                </CardItem>
+              )}
+            />
           </View>
         </View>
       </View >

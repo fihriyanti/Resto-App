@@ -16,6 +16,7 @@ export default class PesananScreen extends Component {
       total: 0,
       show: false,
       show2: false,
+      noMeja: ''
     }
   }
 
@@ -50,6 +51,17 @@ export default class PesananScreen extends Component {
   total = () => {
     this.setState({ count: this.props.navigation.getParam('banyak') });
     this.setState({ jumlah: this.props.navigation.getParam('banyak') * this.props.navigation.getParam('harga') });
+  }
+
+  bayar = () => {
+    const user = firebase.auth().currentUser
+    const Reservasi = firebase.database().ref("Transaksi/" + user.uid);
+        Reservasi.set({
+          status: "Belum dikonfirmasi",
+          noMeja: this.state.noMeja,
+          statusPesan: "Diproses"
+        })
+        this.props.navigation.navigate('CountDownScreen')
   }
 
   render() {
@@ -87,7 +99,7 @@ export default class PesananScreen extends Component {
             </View>
             <Text style={styles.judul}>No. Meja</Text>
             <Item>
-              <Input placeholder="Input No Meja" />
+              <Input onChangeText={noMeja => this.setState({ noMeja })} placeholder="Input No Meja" />
             </Item>
             <Text style={styles.judul}>Metode Pembayaran</Text>
             <View style={{ flexDirection: 'column' }}>
@@ -129,6 +141,7 @@ export default class PesananScreen extends Component {
                 style={styles.btnPesan}
                 onPress={() => {
                   this.setState({ show: false });
+                  this.bayar();
                   this.props.navigation.navigate('PembayaranScreen');
                 }}
               >
@@ -157,6 +170,7 @@ export default class PesananScreen extends Component {
                 style={styles.btnPesan}
                 onPress={() => {
                   this.setState({ show: false });
+                  this.bayar;
                   this.props.navigation.navigate('PembayaranScreen');
                 }}
               >
