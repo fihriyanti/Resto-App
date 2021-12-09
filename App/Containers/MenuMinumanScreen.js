@@ -38,7 +38,7 @@ export default class MenuMinumanScreen extends Component {
       firebase.app()
     }
 
-    firebase.database().ref('Menu/Minuman').on('value', (snapshot) => {
+    firebase.database().ref('Menu/Minuman').orderByChild("Status").equalTo("available").on('value', (snapshot) => {
       var li = []
       snapshot.forEach((child) => {
         li.push({

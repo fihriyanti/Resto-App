@@ -21,6 +21,12 @@ export default StyleSheet.create({
         borderBottomRightRadius: 30,
         borderBottomLeftRadius: 30
     },
+    batas: {
+        backgroundColor: 'yellow', 
+        padding: 10, 
+        margin: 10, 
+        borderRadius: 20
+    },
     set: {
       color: 'white',
       fontSize: 32,

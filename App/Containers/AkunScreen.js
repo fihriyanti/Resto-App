@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Image, View, Text } from 'react-native'
-import { Button, Icon, Thumbnail, List, ListItem, Left, Right } from 'native-base'
+import { Button, Icon, Thumbnail, List, ListItem, Left, Input, Label } from 'native-base'
 import { Images } from '../Themes'
 // import auth from '@react-native-firebase/auth'
 import firebase from 'firebase'
@@ -10,34 +10,36 @@ import styles from './Styles/AkunScreenStyles'
 import { ScrollView } from 'react-native'
 
 export default class AkunScreen extends Component {
-  
+  constructor(props) {
+    super(props);
+    this.state = {
+      nohp: '',
+      list: [],
+    };
+  }
 
-  // componentDidMount() {
-  //   // Your web app's Firebase configuration
-  //   // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-  //   var firebaseConfig = {
-  //     apiKey: "AIzaSyCD0uUL812u98r3LSsLfx60_BiJEEhnHM4",
-  //     authDomain: "d-fasto.firebaseapp.com",
-  //     projectId: "d-fasto",
-  //     storageBucket: "d-fasto.appspot.com",
-  //     messagingSenderId: "888195449280",
-  //     appId: "1:888195449280:web:b838a6deaac9fd26c8c825"
-  //     // measurementId: "G-JGQ4DRP757"  
-  //   };
-  //   // Initialize Firebase
-  //   if(!firebase.apps.length){
-  //     firebase.initializeApp(firebaseConfig);
-  //   }
-  //   else{
-  //     firebase.app();
-  //   }
-  // }
-  
+  componentDidMount() {
+    // this.setState({ nohp : firebase.database().ref("User/" + user.uid + "/" + "no_hp").once })
+    firebase.database().ref('User/' + firebase.auth().currentUser.uid).on('value', (snapshot) => {
+      var li = []
+      // var totalsemua = 0
+      li.push({
+        key: snapshot.key,
+        no_hp: snapshot.val().no_hp
+      })
+      this.setState({ list: li })
+      console.log(li[0].no_hp)
+      this.setState({nohp : li[0].no_hp})
+    })
+    console.log(this.state.nohp);
+  }
   signoutuser = () =>{
     // auth().signOut().then(this.props.navigation.navigate('LoginScreen'))
     firebase.auth().signOut().then(this.props.navigation.navigate('LoginScreen'))
     console.log('logout berhasil')
   }
+
+
   render() {
     return (
       <View style={styles.mainContainer}>
@@ -51,7 +53,7 @@ export default class AkunScreen extends Component {
           <View style={styles.centered}>
             {/* <Thumbnail source={Images.profile} style={styles.logo} /> */}
             <Text style={styles.nama}>Akun Saya</Text>
-            <Text style={styles.username}>@username</Text>
+            {/* <Text style={styles.username}>@username</Text> */}
           </View>
           <View style={styles.footer}>
             <ScrollView>
@@ -64,11 +66,17 @@ export default class AkunScreen extends Component {
                 </ListItem>
                 <ListItem>
                   <Left>
-                    <Text style={styles.txtLeft}>No. HP</Text>
+                    <Text style={styles.txtLeft}>Email</Text>
                   </Left>
                   <Text style={styles.txtRight}>{firebase.auth().currentUser.email}</Text>
                 </ListItem>
                 <ListItem>
+                  <Left>
+                    <Text style={styles.txtLeft}>No. HP</Text>
+                  </Left>
+                  <Text style={styles.txtRight}>{this.state.nohp}</Text>
+                </ListItem>
+                {/* <ListItem>
                   <Left>
                     <Text style={styles.txtLeft}>Alamat</Text>
                   </Left>
@@ -79,7 +87,7 @@ export default class AkunScreen extends Component {
                     <Text style={styles.txtLeft}>Tanggal Lahir</Text>
                   </Left>
                   <Text style={styles.txtRight}>28-06-1991</Text>
-                </ListItem>
+                </ListItem> */}
                 <ListItem onPress={this.signoutuser}>
                   <Left>
                     <Text style={styles.txtLogout}>Log Out</Text>

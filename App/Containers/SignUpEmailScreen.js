@@ -59,7 +59,7 @@ export default class SignUpEmailScreen extends Component {
         })
         this.props.navigation.navigate("LoginScreen")
       }).catch(error => {
-        alert("Gagal membuat akun anda")
+        // alert("Gagal membuat akun anda")
       })
   }
 

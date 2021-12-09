@@ -22,7 +22,7 @@ export default class MenuMakananScreen extends Component {
 
   componentDidMount() {
 
-    firebase.database().ref('Menu/Makanan').on('value', (snapshot) => {
+    firebase.database().ref('Menu/Makanan').orderByChild("Status").equalTo("available").on('value', (snapshot) => {
       var li = []
       snapshot.forEach((child) => {
         li.push({

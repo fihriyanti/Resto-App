@@ -171,7 +171,7 @@ export default class PesananScreen extends Component {
               <Button full
                 style={styles.btnPesan}
                 onPress={() => {
-                  this.bayar;
+                  this.bayar();
                   this.props.navigation.navigate('PembayaranScreen');
                 }}
               >

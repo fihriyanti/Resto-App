@@ -97,10 +97,10 @@ export default class LoginScreen extends Component {
                   <Label>+62</Label>
                   <Input placeholder='Enter Your Phone Number' style={styles.input} onChangeText={username => this.setState({ username })} />
                 </Item> */}
-                <Text style={styles.label}>Username</Text>
+                <Text style={styles.label}>Email</Text>
                 <Item inlineLabel style={styles.item1}>
-                  <Icon type='FontAwesome' name='user-o' />
-                  <Input placeholder='Your Username' style={styles.input} onChangeText={username => this.setState({ username })} />
+                  <Icon type='Fontisto' name='email' />
+                  <Input placeholder='Your Email' style={styles.input} onChangeText={username => this.setState({ username })} />
                 </Item>
                 <Text style={styles.label}>Password</Text>
                 <Item inlineLabel style={styles.item1}>

@@ -84,5 +84,26 @@ export default StyleSheet.create({
     color: 'white',
     fontWeight: 'bold',
     fontSize: 20
-  }
+  },
+  modal: { 
+    backgroundColor: 'white', 
+    padding: 20, 
+    flex: 1, 
+    marginHorizontal: 20, 
+    marginVertical: 280, 
+    borderRadius: 30 
+  },
+  btnOK: {
+    justifyContent: 'center',
+    alignContent: 'center',
+    alignSelf: 'center',
+    margin: 10,
+    paddingHorizontal: 30,
+    backgroundColor: '#1565c0'
+  },
+  txtBtnOK: {
+    color: 'white',
+    fontWeight: 'bold',
+    fontSize: 15
+  },
 })

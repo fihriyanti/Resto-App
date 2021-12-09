@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Image, View, Text } from 'react-native'
-import { Body, Button, Card, CardItem, Icon, Left, Right } from 'native-base'
+import { Body, Button, Card, CardItem, Icon, Left, Right, Textarea } from 'native-base'
 import firebase from 'firebase';
 
 // Styles
@@ -14,6 +14,7 @@ export default class DetailsMenuScreen extends Component {
             img: '',
             nama: '',
             harga: '',
+            notes: ''
         }
     }
     tambahJumlah = () => {
@@ -82,6 +83,7 @@ export default class DetailsMenuScreen extends Component {
                         harga: this.props.navigation.getParam('paramharga'),
                         banyak: this.state.count,
                         perjumlah: jumlah,
+                        note : this.state.notes,
                     })
                     this.props.navigation.navigate('MenuTabNav')
                 }
@@ -136,6 +138,13 @@ export default class DetailsMenuScreen extends Component {
                                     </View>
                                 </View>
                             </View>
+                        </View>
+                        <View style={{ margin: 20 }}>
+                            <View style={{ flexDirection: 'row', }}>
+                                <Icon type='SimpleLineIcons' name='note' />
+                                <Text style={styles.note}>Notes</Text>
+                            </View>
+                            <Textarea onChangeText={notes => this.setState({ notes })} rowSpan={3} bordered placeholder='Catatan makanan'></Textarea>
                         </View>
                     </View>
                 </View>

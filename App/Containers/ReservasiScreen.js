@@ -141,6 +141,9 @@ export default class ReservasiScreen extends Component {
                             <Image source={Images.logoApp} style={styles.logo} />
                             <Text style={styles.txtTitle}>RESERVASI</Text>
                         </View>
+                        <View style={styles.batas}>
+                            <Text style={{fontSize: 15, textAlign: 'center'}}>Silahkan melakukan reservasi 1 jam sebelum kedatangan</Text>
+                        </View>
                         <View style={styles.footer}>
                             <Card style={styles.card}>
                                 <List>

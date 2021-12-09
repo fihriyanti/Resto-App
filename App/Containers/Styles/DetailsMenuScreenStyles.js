@@ -45,12 +45,12 @@ export default StyleSheet.create({
   namaMenu: {
     textAlign: 'center',
     fontWeight: 'bold',
-    fontSize: 25,
+    fontSize: 23,
   },
   hargaMenu: {
     textAlign: 'center',
     marginTop: 5,
-    fontSize: 20,
+    fontSize: 18,
     fontWeight: 'bold'
   },
   review: {
@@ -86,5 +86,11 @@ export default StyleSheet.create({
   jml: {
     fontSize: 25,
     paddingHorizontal: 10
-  }
+  },
+  note: {
+    fontSize: 16,
+    fontWeight: 'bold',
+    marginLeft: 10,
+    marginTop: 3
+  },
 })
